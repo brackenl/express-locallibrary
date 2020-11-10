@@ -25,6 +25,14 @@ AuthorSchema.virtual("url").get(function () {
   return "/catalog/author/" + this._id;
 });
 
+AuthorSchema.virtual("form_date_of_birth").get(function () {
+  return DateTime.fromJSDate(this.date_of_birth).toISODate();
+});
+
+AuthorSchema.virtual("form_date_of_death").get(function () {
+  return DateTime.fromJSDate(this.date_of_death).toISODate();
+});
+
 // Virtual for author's formatted birth date
 AuthorSchema.virtual("date_of_birth_formatted").get(function () {
   return this.date_of_birth
